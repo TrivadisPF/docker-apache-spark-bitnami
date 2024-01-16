@@ -1,5 +1,7 @@
 FROM trivadis/spark-submit:3.5.0
 
+LABEL maintainer="Guido Schmutz <schmutz68@gmail.com>"
+
 COPY template.sh /
 
 # Copy the requirements.txt first, for separate dependency resolving and downloading
