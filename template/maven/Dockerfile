@@ -11,11 +11,13 @@ USER root
 
 RUN apt-get update && apt-get install -y maven
 
-USER 1001
-
 RUN chmod +x /template.sh \
       && mkdir -p /app \
-      && mkdir -p /usr/src/app
+      && mkdir -p /usr/src/app \
+      && chmod 777 /app \
+      && chmod 777 /usr/src/app
+
+USER 1001
 
 # Copy the POM-file first, for separate dependency resolving and downloading
 ONBUILD COPY pom.xml /usr/src/app
