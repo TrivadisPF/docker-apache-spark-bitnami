@@ -17,14 +17,14 @@ RUN apt-get update && apt-get install -y maven\
 # Copy the POM-file first, for separate dependency resolving and downloading
 ONBUILD COPY pom.xml /usr/src/app
 ONBUILD RUN cd /usr/src/app \
-      && mvn dependency:resolve
+      && mvn -Dmaven.repo.local=/usr/src/app/.m2 dependency:resolve
 ONBUILD RUN cd /usr/src/app \
-      && mvn verify
+      && mvn -Dmaven.repo.local=/usr/src/app/.m2 verify
 
 # Copy the source code and build the application
 ONBUILD COPY . /usr/src/app
 ONBUILD RUN cd /usr/src/app \
-      && mvn clean package
+      && mvn -Dmaven.repo.local=/usr/src/app/.m2 clean package
 
 USER 1001
 
