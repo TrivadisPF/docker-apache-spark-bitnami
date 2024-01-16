@@ -1,4 +1,4 @@
-FROM trivadis/spark-python-template:3.5.0
+FROM trivadis/spark-template-python:3.5.0
 	  
 COPY wordcount.py /app/
 
