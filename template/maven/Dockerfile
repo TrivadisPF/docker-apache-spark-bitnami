@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y maven\
       && mkdir -p /app \
       && mkdir -p /usr/src/app
 
+USER 1001
+
 # Copy the POM-file first, for separate dependency resolving and downloading
 ONBUILD COPY pom.xml /usr/src/app
 ONBUILD RUN cd /usr/src/app \
@@ -25,7 +27,5 @@ ONBUILD RUN cd /usr/src/app \
 ONBUILD COPY . /usr/src/app
 ONBUILD RUN cd /usr/src/app \
       && mvn -Dmaven.repo.local=/usr/src/app/.m2 clean package
-
-USER 1001
 
 CMD ["/bin/bash", "/template.sh"]
