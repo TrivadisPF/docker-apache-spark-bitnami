@@ -1,6 +1,4 @@
-FROM bde2020/spark-submit:3.3.0-hadoop3.3
-
-LABEL maintainer="Gezim Sejdiu <g.sejdiu@gmail.com>, Giannis Mouchakis <gmouchakis@gmail.com>"
+FROM trivadis/spark-submit:3.5.0
 
 COPY template.sh /
 
